@@ -1,0 +1,16 @@
+
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+jupyter
+ucimlrepo
+mlflow
+fastapi
+uvicorn[standard]
+pydantic
+joblib
+pytest
+httpx
+ruff
