@@ -6,7 +6,7 @@ import joblib
 import pandas as pd
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
-
+from prometheus_fastapi_instrumentator import Instrumentator
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 MODEL_PATH = PROJECT_ROOT / "models" / "LogisticRegression.joblib"
 
@@ -98,3 +98,7 @@ def predict(patient: PatientData):
             status_code=500,
             detail="Prediction failed.",
         ) from None
+Instrumentator().instrument(app).expose(
+    app,
+    endpoint="/metrics",
+)
